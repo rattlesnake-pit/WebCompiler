@@ -1,0 +1,36 @@
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+textarea {
+  resize: none;
+  height:100%;
+  width: 100%;
+}
+
+.hcontainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  align-self: auto;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+#root > div {
+  height: 100%;
+}
+.item {
+  flex: 1 1 auto;
+  border: 1px solid black;
+}
+.hcontainer > div {
+  height: 100%;
+}
+
+html, body {
+  height:100% ;
+}
