@@ -1,31 +1,49 @@
 import React, { Component } from 'react';
 import './App.css';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      compiler: "int x\nx = 100\nprint(x)",
-      assembler: "defi x\npushki 100\npopi x\npushi x\nprti x",
-      binary: " dfasdfasdf",
+      compiler: "{\nint x\nx = 100\nprint(x)\n}",
+      assembler: "defi x\npushki 100\npopi x\nprti x\nprtcr",
+      binary: "00000000: 2843 2943 4855 4e4b 554e 0004 000c 1700  (C)CHUNKUN......\n00000010: 0000 641c 0000 0300 0001                 ..d.......",
       executable:" return 1"
     }
   }
   compilerChange(event) {
+
     this.setState({compiler: event.target.value});
   }
   handleCompile() {
+    var that = this
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    var request = new Request('/compile', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ compiler: this.state.compiler})
+    });
+
+    fetch(request).then(function(response) {
+      return response.json();
+    })
+    .then(function(obj) {
+      that.setState({assembler: obj.assembler, binary: obj.chop})
+    })
   }
   render() {
     return (
       <div >
         <div>
         <h1>Compilador</h1>
-        <button> Compilar </button>
+        <button onClick={this.handleCompile.bind(this)}> Compilar </button>
         </div>
         <div className="hcontainer">
           <Compiler compiler={this.state.compiler}
-                    compilerChange={this.compilerChange}/>
+                    compilerChange={this.compilerChange.bind(this)}/>
           <Assembler assembler={this.state.assembler}/>
           <BinaryExecutable binary={this.state.binary} executable={this.state.executable}/>
         </div>
@@ -59,7 +77,7 @@ class Assembler extends Component {
 class BinaryExecutable extends Component {
   render() {
     return (
-      <div className="item">
+      <div className="item2">
           <Binary binary={this.props.binary}/>
           <Executable executable={this.props.executable}/>
       </div>
