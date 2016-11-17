@@ -13,9 +13,12 @@ app.post('/compile', function(req, res) {
   var compile = 'echo "' + req.body.compiler + '" | ./compiler'
   exec(compile, function(error, asm_stdout, stderr) {
     if(error) console.log(error);
-    var assemble = 'echo "' + asm_stdout + '" | ./asm_lin | xxd'
+    var assemble = 'echo "' + asm_stdout + '" | ./asm_lin > temp.chop && cat temp.chop | xxd'
     exec(assemble, function(error, chop_stdout, chop_stderr) {
-      res.json({assembler: asm_stdout, chop: chop_stdout});
+      var vm = 'echo " " | ./vm temp.chop'
+      exec(vm, function(error, vm_stdout, vm_stderr) {
+        res.json({assembler: asm_stdout, chop: chop_stdout, vm: vm_stdout});
+      })
     })
   })
 })

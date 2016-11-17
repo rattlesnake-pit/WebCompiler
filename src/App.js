@@ -31,7 +31,9 @@ class App extends Component {
       return response.json();
     })
     .then(function(obj) {
-      that.setState({assembler: obj.assembler, binary: obj.chop})
+      that.setState({assembler: obj.assembler,
+                     binary: obj.chop,
+                     executable: obj.vm})
     })
   }
   render() {
