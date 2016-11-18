@@ -3,7 +3,7 @@ var exec = require('child_process').exec
 var app = express()
 var bodyParser = require('body-parser')
 
-const PORT = 80
+const PORT = 8000
 app.use(express.static('build'))
 
 // parse application/json

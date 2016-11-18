@@ -21,20 +21,19 @@
   </head>
   <body>
     <style>li {float: left;}</style>
-  <!-- navigation start -->
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <ul type="none">
-        <li><img alt="Rs" src="rs.png" width="70" height="40" ></li>&nbsp;  
-        <li class="navbar-brand" >Rattlesnake</li>
-        <li><a type="button" class="navbar-brand btn" width="50" height="50" href="#help"><span class="glyphicon glyphicon-question-sign"></span><font color="#323232">&nbsp;Help</font></a></li>
-        </ul>
+    <!-- navigation start -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <ul type="none">
+          <li><img alt="Rs" src="rs.png" width="70" height="40" ></li>&nbsp;  
+          <li class="navbar-brand" >Rattlesnake</li>
+          <li><a type="button" class="navbar-brand btn" width="50" height="50" href="#help"><span class="glyphicon glyphicon-question-sign"></span><font color="#323232">&nbsp;Help</font></a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-  
-<!-- navigation end -->  
+    </nav>
+    <!-- navigation end -->  
 
     <div id="root" class=""></div>
     <!--
@@ -47,5 +46,119 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
+<div class="remodal" data-remodal-id="help" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc" width="300px">
+  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+  <div width="300px">
+    <h2 id="modal1Title">List of allowed instructions</h2>
+    <textarea rows="15" cols="40" id="modal1Desc"  class="basic-grey" disabled style="resize:none;" data-role="none">
+    --- NOTES --------------------------                
+    Always start with: {                      
+    And end with: }     
+                      
+    --- Declarations -------------------                     
+    int a                                 
+    double b                               
+    string (varname)(length)                                       
+    float d                                                       
+    int [arraysize] e                               
+    string [arraysize] f (length)                   
+    int a; double b; String c   
+                                       
+    --- Variable assignment ------------                                 
+    int a                                                           
+    a = 3                                                           
+    String b                                                       
+    b (5) = "hello"                                                     
+                                                           
+    float c                                                        
+    c = 5.5                                                        
+                                                          
+    int [2] array                                                  
+    array [0] = 3                          
+    array [1]= array [0]      
+                                         
+    --- Read and print  -----------------                               
+    read(word)                                                     
+    read(integer)                                                  
+    read(double)                                                 
+    print(word)                                       
+    print(variables)                             
+    :) be happy and enjoy!       
+                                       
+    --- Loops  and conditionals ---------                                    
+    1)for                                                           
+    
+    int y; int z                                                  
+    z = 3                                                         
+    string word(10)                                               
+    string[5] words(10)                          
+    for (y =0; y <= z; y=y+1)                     
+    { 
+       read(word)
+       words[y] = word                                            
+    }   
+    print(word)                                                   
+    print(y)                                                       
+    
+   
+    2)while                             
+  
+    int y; int z                            
+    z = 3                                                         
+    y = 0                                                          
+    while(y <= z)                                                  
+    {
+       read(word)
+       words[y] = word                            
+       y = y + 1                                                  
+    } 
+    print(word)                                                     
+    print(y)                                      
+   
+    3)if                              
+    
+    int a;int b
+    a = 0
+    if(a=0)
+    {
+      a=a+1
+      print(a)
+    }
+    
+    4)else                              
+    
+    int a;int b
+    a = 0
+    if(a=0)
+    {
+      a=a+1
+      print(a)
+    }
+    else
+    {
+      a=a+2
+        print(a)
+    }
+    
+    
+    
+    </textarea>
+  </div>
+  <br>
+  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+</div>
+
+ <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+<script src="modal.js">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="libs/jquery/dist/jquery.min.js"><\/script>')</script>
+<script src="remodal.js"></script>
+  <footer><center>© Rattlesnake 2016 </center></footer>
   </body>
 </html>

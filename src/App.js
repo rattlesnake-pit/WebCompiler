@@ -39,23 +39,49 @@ class App extends Component {
   render() {
     return (
       <div >
-        <div>
-        <h1>Compilador</h1>
-        <section id="buttons">
-          <div className="container">
-                <div className="row">
-                  <div className="col-lg-12">
-                    <a onClick={this.handleCompile.bind(this)} type="button" className="btn btn-default btn-lg label-success"><span className="glyphicon glyphicon-ok"></span>&nbsp;<font color="#323232">Compile it!</font></a>
+          <section id="buttons">
+            <div className="container">
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <a onClick={this.handleCompile.bind(this)} type="button" className="btn btn-default btn-lg label-success"><span className="glyphicon glyphicon-ok"></span>&nbsp;<font color="#323232">Compile it!</font></a>
+                    </div>
                   </div>
-                </div>
+              </div>
+          </section>
+          <section id="high-level">
+           <div className="container">
+            <div className="row">
+              <div className="col-lg-6">
+                <label htmlFor="ex1" className="h4" >High-level Language</label><br/>
+                <Compiler compiler={this.state.compiler} compilerChange={this.compilerChange.bind(this)}/>
+              </div>
+              <div className="col-lg-3">
+                 <label htmlFor="ex1" className="h4" >Assembly Language</label><br/>
+                <Assembler assembler={this.state.assembler}/>
+              </div>
+              <div className="col-lg-3 ">
+                <label htmlFor="ex1" className="h4" >Disassembly Language</label><br/>
+                <textarea rows="15" cols="36" id="disassembly" style={{resize: "none"}} data-role="none" disabled></textarea>
+              </div>
             </div>
-        </section>
-        </div>
-        <div className="hcontainer">
-          <Compiler compiler={this.state.compiler}
-                    compilerChange={this.compilerChange.bind(this)}/>
-          <Assembler assembler={this.state.assembler}/>
-          <BinaryExecutable binary={this.state.binary} executable={this.state.executable}/>
+            
+            </div>
+          </section>
+          <section id="compiler">
+           <div className="container">
+            <div className="row">
+             <div className="col-lg-6">
+                <label htmlFor="ex2" className="h4" >Compiled Result</label><br/>
+                <Executable executable={this.state.executable} />
+             </div>
+              <div className="col-lg-6">
+                   <label htmlFor="ex2" className="h4" >Binary (CHOP)</label><br/>
+                  <Binary binary={this.state.binary} />
+              </div>
+            </div>
+           </div>
+          </section>
+        <div>
         </div>
       </div>
     );
@@ -65,9 +91,8 @@ class App extends Component {
 class Compiler extends Component {
   render() {
     return (
-        <div className="item">
-          <h3>Compilador</h3>
-          <textarea value={this.props.compiler} onChange={this.props.compilerChange}/>
+        <div>
+          <textarea value={this.props.compiler} onChange={this.props.compilerChange} rows="15" cols="80" id="highlevel" style={{resize: "none"}} data-role="none"/>
         </div>
     );
   }
@@ -76,9 +101,8 @@ class Compiler extends Component {
 class Assembler extends Component {
   render() {
     return (
-      <div className="item">
-        <h3>Ensamblador</h3>
-        <textarea value={this.props.assembler}/>
+      <div >
+        <textarea rows="15" cols="38" id="assembly" style={{resize: "none"}} data-role="none" disabled value={this.props.assembler}/>
       </div>
     );
   }
@@ -98,9 +122,8 @@ class BinaryExecutable extends Component {
 class Binary extends Component {
   render() {
     return (
-    <div className="item">
-      <h3>Chop("binario")</h3>
-      <textarea value={this.props.binary}/>
+    <div>
+      <textarea value={this.props.binary} rows="15" cols="78" id="compiled" style={{resize: "none"}} data-role="none" disabled/>
     </div>
     );
   }
@@ -109,9 +132,8 @@ class Binary extends Component {
 class Executable extends Component {
   render() {
     return (
-    <div className="item">
-      <h3>Ejecutable</h3>
-      <textarea value={this.props.executable}/>
+    <div >
+      <textarea value={this.props.executable} rows="15" cols="80" id="compiled" style={{resize: "none"}} data-role="none" disabled/>
     </div>
     );
   }
