@@ -9,7 +9,7 @@ class App extends Component {
       compiler: "{\nint x\nx = 100\nprint(x)\n}",
       assembler: "defi x\npushki 100\npopi x\nprti x\nprtcr",
       binary: "00000000: 2843 2943 4855 4e4b 554e 0004 000c 1700  (C)CHUNKUN......\n00000010: 0000 641c 0000 0300 0001                 ..d.......",
-      executable:" return 1"
+      executable:"100"
     }
   }
   compilerChange(event) {
@@ -41,7 +41,15 @@ class App extends Component {
       <div >
         <div>
         <h1>Compilador</h1>
-        <button onClick={this.handleCompile.bind(this)}> Compilar </button>
+        <section id="buttons">
+          <div className="container">
+                <div className="row">
+                  <div className="col-lg-12">
+                    <a onClick={this.handleCompile.bind(this)} type="button" className="btn btn-default btn-lg label-success"><span className="glyphicon glyphicon-ok"></span>&nbsp;<font color="#323232">Compile it!</font></a>
+                  </div>
+                </div>
+            </div>
+        </section>
         </div>
         <div className="hcontainer">
           <Compiler compiler={this.state.compiler}
